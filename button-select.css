@@ -34,22 +34,46 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: clip;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	    -ms-box-sizing: border-box;
+			box-sizing: border-box;
 }
 .select-wrap:not(.no-ellipsis) {
-	text-overflow: ellipsis;
-	-o-text-overflow: ellipsis;
 	-ms-text-overflow: ellipsis;
+	 -o-text-overflow: ellipsis;
+		text-overflow: ellipsis;
 }
 
-.select-wrap .select-icon {
+.select-wrap .select-arrow {
+	display: inline-block;
 	position: absolute;
 	top: 4px;
-	right: 10px;
-	display: inline-block;
+	right: 9px;
 	z-index: 1;
+}
+.select-wrap .select-arrow-caret,
+.select-wrap .select-arrow-updown:before {
+	display: inline-block;
+	position: absolute;
+	top: 12px;
+	right: 8px;
+	width: 0;
+	height: 0;
+	vertical-align: top;
+	border-top:   5px solid #333;
+	border-right: 5px solid transparent;
+	border-left:  5px solid transparent;
+	content: "";
+}
+.select-wrap .select-arrow-updown {
+	top: 16px;
+}
+.select-wrap .select-arrow-updown:before {
+	top: -14px;
+	right: -5px;
+	border-top-width: 0;
+	border-bottom: 5px solid #333;
 }
 
 .select-wrap .select-value {
@@ -69,9 +93,9 @@
 	opacity: 0;
 	filter: alpha(opacity=0);
 	z-index: 2;
-	appearance: none;
-	-o-appearance: none;
-	-ms-appearance: none;
-	-moz-appearance: none;
 	-webkit-appearance: none;
+	   -moz-appearance: none;
+		-ms-appearance: none;
+		 -o-appearance: none;
+			appearance: none;
 }

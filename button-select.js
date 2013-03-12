@@ -28,20 +28,56 @@
 
 ;(function( $ ){
 
-	$.fn.buttonSelect = function(options) {
+	$.fn.buttonSelect = function(userOptions) {
+
+		// Options
+		// --------------------
+		// Options can be added via params passed to button select
+		// on initialization.
+		// Alternatively, options can be added as data attributes to
+		// the select element you are styling.
+		// e.g. 'buttonClass': 'btn' would become data-button-class="btn"
+
+		// Note: Options specified as data attributes will override any
+		//       options passed in on initialization.
+
+		var defaults = {
+			// Default button styling class
+			'buttonClass':	'button',
+
+			// Extra custom classes to add to the select button
+			'class':	'',
+
+			// Custom class to apply to the arrow icon.
+			// This can be useful if you want to use a
+			// font-icon as the caret. e.g. 'icon-chevron-down'
+			'arrowClass':	'',
+
+			// If true, adds two arrow to the select menu (up and down)
+			// Note: This does nothing if you give 'arrowClass' a value.
+			'arrowUpDown':	false
+		};
 
 		this.each(function(i, el) {
 
-			var defaults = {
-				// Default button styling class
-				'buttonClass':	'btn',
-
-				// These clases will be added to the select button
-				'dataClass':	''
-			};
+			// Data attributes override options specified on initialization
+			var dataOptions = $(el).data();
 
 			// Extend default options with user provided options
-			var options = $.extend({}, defaults, options);
+			var options = $.extend({}, defaults, userOptions, dataOptions);
+
+
+			// Arrow options setup
+			// --------------------
+			if (options.arrowClass === defaults.arrowClass) {
+
+				// No arrow class specified, use a border caret
+				options.arrowClass += ' select-arrow-caret';
+
+				if (options.arrowUpDown) {
+					options.arrowClass += ' select-arrow-updown';
+				}
+			}
 
 
 			/**
@@ -70,7 +106,9 @@
 			var $el = $(el);
 			$el.wrap('<span class="select-wrap">');
 			var $wrapper = $el.parent();
-			var $iconSpan = $('<span class="select-icon icon-chevron-down"></span>');
+			var $iconSpan = $(
+				'<span class="select-arrow ' + options.arrowClass + '"></span>'
+			);
 			var $textSpan = $('<span class="select-value"></span>');
 			$wrapper.append($iconSpan);
 			$wrapper.append($textSpan);
@@ -82,10 +120,9 @@
 			// Initial value
 			setValue($el, $textSpan);
 
-			// Add all classes to wrapper in the data-class attr
-			var wrapperClass = options.dataClass + ' ' + $el.data('class');
-			if (wrapperClass) {
-				$wrapper.addClass(wrapperClass);
+			// Add extra classes to wrapper
+			if (options.class) {
+				$wrapper.addClass(options.class);
 			}
 
 			// Ensure select always has a button class
