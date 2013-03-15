@@ -91,7 +91,7 @@
 				$placeholder.text(option);
 
 				// Initial disabled state on/off
-				if ($el.attr('disabled') === 'disabled') {
+				if ($el.prop('disabled')) {
 					$wrapper.addClass('disabled');
 				}
 				else {
@@ -139,12 +139,7 @@
 			// Replace the value of the select 
 			// every time a new value is selected.
 			$el.change(function(e) {
-				if ($.inArray($el.val(), ['', 'default']) > -1) {
-					$el.val("default");
-				}
-				else {
-					setValue($el, $textSpan);
-				}
+				setValue($el, $textSpan);
 			});
 
 		});
