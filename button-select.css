@@ -33,6 +33,7 @@
 	padding-right: 20px;
 	white-space: nowrap;
 	overflow: hidden;
+	vertical-align: top;
 	text-overflow: clip;
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
