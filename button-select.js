@@ -87,7 +87,15 @@
 			var setValue = function($select, $placeholder) {
 				var option, value;
 				value = $select.val();
-				option = $select.children('option[value="' + value + '"]').text();
+
+				if (value == null) {
+					// in case the first option is disabled
+					option = $select.children('option:first-child').text();
+				}
+				else {
+					// else, select option using the 'value' attr
+					option = $select.children('option[value="' + value + '"]').text();
+				}
 				$placeholder.text(option);
 
 				// Initial disabled state on/off
