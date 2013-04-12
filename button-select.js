@@ -85,7 +85,6 @@
 			 * over to a given placeholder element.
 			 */
 			var setValue = function($select, $placeholder) {
-				console.log('setting');
 				var option, value;
 				value = $select.val();
 
