@@ -26,7 +26,7 @@
  *   http://www.opensource.org/licenses/mit-license.php
  */
 
-;(function( $ ){
+;(function( $ ) {
 
 	$.fn.buttonSelect = function(userOptions) {
 
@@ -85,6 +85,7 @@
 			 * over to a given placeholder element.
 			 */
 			var setValue = function($select, $placeholder) {
+				console.log('setting');
 				var option, value;
 				value = $select.val();
 
@@ -92,10 +93,14 @@
 					// in case the first option is disabled
 					option = $select.children('option:first-child').text();
 				}
+				if (option = $select.children(':selected')[0]) {
+					option = $(option).text();
+				}
 				else {
 					// else, select option using the 'value' attr
 					option = $select.children('option[value="' + value + '"]').text();
 				}
+
 				$placeholder.text(option);
 
 				// Initial disabled state on/off
@@ -125,8 +130,10 @@
 			// Default settings
 			// ---------------------
 
-			// Initial value
-			setValue($el, $textSpan);
+			// Set the initial value
+			setTimeout(function () {
+				setValue($el, $textSpan);
+			}, 1);
 
 			// Add extra classes to wrapper
 			if (options.class) {
