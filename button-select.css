@@ -3,19 +3,19 @@
  * jQuery plugin for styling native cross-browser select menus.
  * 
  * Version:		0.1.0
- * Download:	https://github.com/benwigley/wigley-select
+ * Download:	https://github.com/benwigley/button-select
  * Requires:
  *			1) jQuery v1.3+
  *			2) Bootstrap OR your own custom button styling. Simply create
  *				a button class you would like to use and then provide that
- *				class as option to WigleySelect when you initialise it. (see example)
+ *				class as option to ButtonSelect when you initialise it. (see example)
  *
  * Examples:
  *		// With Bootstrap
- *		$('select.styled').wigleySelect();
+ *		$('select').buttonSelect();
  *
  *		// Custom button class
- *		$('select.styled').wigleySelect({
+ *		$('select.styled').buttonSelect({
  *			buttonClass: '.myButtonClass'
  *		});
  *
@@ -82,7 +82,7 @@
 	z-index: 1;
 }
 
-.select-wrap select.styled {
+.select-wrap select {
 	position: absolute;
 	top: 0;
 	left: 0;
