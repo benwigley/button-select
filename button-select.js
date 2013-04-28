@@ -144,11 +144,31 @@
 				$wrapper.addClass(options.buttonClass);
 			}
 
+
+			// Set dropdown caret to the button color
+			// and position it correct
+			textColor 	 	= $wrapper.css('color');
+			paddingRight 	= parseInt($wrapper.css('padding-right'), 10);
+			iconHeight 		= parseInt($iconSpan.css('border-top-width'), 10);
+			if (iconHeight === 0) { iconHeight = parseInt($iconSpan.css('border-bottom-width'), 10) }
+
+			$iconSpan.css({
+				'color': textColor,
+				'border-top-color': textColor,
+				'border-bottom-color': textColor,
+				'top': '50%',
+				'right': paddingRight * 1,
+				'margin-top': -(iconHeight / 2)
+			});
+
+
 			// Check for styles on the select menu 
 			// and apply them to the wrapper element.
 			$wrapper.css({
-				'float': $el.css('float')
+				'float': $el.css('float'),
+				'padding-right': paddingRight * 2
 			});
+
 			
 			// Replace the value of the select 
 			// every time a new value is selected.
