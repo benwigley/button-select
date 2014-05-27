@@ -9,7 +9,7 @@ A jQuery plugin that allows you to style native select menus using your own cust
 Button select works well with the default 'btn' class that [Twitter Boostrap](http://getbootstrap.com/css/#buttons) uses
 
 ``` javascript
-$('select.custom').buttonSelect({
+$('select.button-select').buttonSelect({
 	buttonClass: 'btn'
 });
 ```
@@ -17,7 +17,7 @@ $('select.custom').buttonSelect({
 #### Default Options
 
 ``` javascript
-$('select.custom').buttonSelect({
+$('select.my-selector').buttonSelect({
 	// Default button styling class
 	buttonClass: 'button'
 			
