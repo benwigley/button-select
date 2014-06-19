@@ -116,6 +116,9 @@
       // ---------------------
 
       var $el = $(el);
+      if ($el.data('button-select')) {
+        return;
+      }
       $el.wrap('<span class="select-wrap">');
       var $btn = $el.parent();
       var $iconSpan = $(
@@ -185,6 +188,7 @@
         $btn.removeClass('focus');
       });
 
+      $el.data('button-select', true);
     });
   };
 })( jQuery );
